@@ -4,6 +4,7 @@
 #include <map>
 #include <vector>
 #include <limits>
+#include "randword.h"
 
 
 
@@ -214,6 +215,16 @@ void displayAllBooks(std::vector<bookdataT> database){
     }
 }
 
+std::vector<int> find_matches(std::string word, char character){
+    std::vector<int> indices;
+    for(int i = 0; i < word.size(); i++){
+        if(word[i] == character){
+            indices.push_back(i);
+        }
+    }
+    return indices;
+}
+
 int main(){
 
     // Problem 1
@@ -230,61 +241,11 @@ int main(){
     int userChoice = 0;
 
     // Initial Books
-    bookdataT temp_book;
-    temp_book.title = "Ender's Game";
-    temp_book.authors.push_back("Orson Scott Card");
-    temp_book.catalog_number = 1;
-    temp_book.subject_headings.push_back("Sci-Fi");
-    temp_book.subject_headings.push_back("Drama");
-    temp_book.subject_headings.push_back("Action");
-    temp_book.publisher = "Tor Books";
-    temp_book.year_of_publication = 1985;
-    temp_book.circulating = true;
-    libdata.push_back(temp_book);
-    bookdataT temp_book2;
-    temp_book2.title = "The Hobbit";
-    temp_book2.authors.push_back("JRR Tolkien");
-    temp_book2.catalog_number = 1;
-    temp_book2.subject_headings.push_back("Fantasy");
-    temp_book2.subject_headings.push_back("Drama");
-    temp_book2.subject_headings.push_back("Action");
-    temp_book2.publisher = "George Allen & Unwin (UK)";
-    temp_book2.year_of_publication = 1937;
-    temp_book2.circulating = true;
-    libdata.push_back(temp_book2);
-    bookdataT temp_book3;
-    temp_book3.title = "The Fellowship of the Ring";
-    temp_book3.authors.push_back("JRR Tolkien");
-    temp_book3.catalog_number = 1;
-    temp_book3.subject_headings.push_back("Fantasy");
-    temp_book3.subject_headings.push_back("Drama");
-    temp_book3.subject_headings.push_back("Action");
-    temp_book3.publisher = "George Allen & Unwin (UK)";
-    temp_book3.year_of_publication = 1954;
-    temp_book3.circulating = true;
-    libdata.push_back(temp_book3);
-    bookdataT temp_book4;
-    temp_book4.title = "The Two Towers";
-    temp_book4.authors.push_back("JRR Tolkien");
-    temp_book4.catalog_number = 1;
-    temp_book4.subject_headings.push_back("Fantasy");
-    temp_book4.subject_headings.push_back("Drama");
-    temp_book4.subject_headings.push_back("Action");
-    temp_book4.publisher = "George Allen & Unwin (UK)";
-    temp_book4.year_of_publication = 1954;
-    temp_book4.circulating = true;
-    libdata.push_back(temp_book4);
-    bookdataT temp_book5;
-    temp_book5.title = "The Return of the King";
-    temp_book5.authors.push_back("JRR Tolkien");
-    temp_book5.catalog_number = 1;
-    temp_book5.subject_headings.push_back("Fantasy");
-    temp_book5.subject_headings.push_back("Drama");
-    temp_book5.subject_headings.push_back("Action");
-    temp_book5.publisher = "George Allen & Unwin (UK)";
-    temp_book5.year_of_publication = 1955;
-    temp_book5.circulating = true;
-    libdata.push_back(temp_book5);
+    bookdataT temp_book;temp_book.title = "Ender's Game";temp_book.authors.push_back("Orson Scott Card");temp_book.catalog_number = 1;temp_book.subject_headings.push_back("Sci-Fi");temp_book.subject_headings.push_back("Drama");temp_book.subject_headings.push_back("Action");temp_book.publisher = "Tor Books";temp_book.year_of_publication = 1985;temp_book.circulating = true;libdata.push_back(temp_book);
+    bookdataT temp_book2;temp_book2.title = "The Hobbit";temp_book2.authors.push_back("JRR Tolkien");temp_book2.catalog_number = 1;temp_book2.subject_headings.push_back("Fantasy");temp_book2.subject_headings.push_back("Drama");temp_book2.subject_headings.push_back("Action");temp_book2.publisher = "George Allen & Unwin (UK)";temp_book2.year_of_publication = 1937;temp_book2.circulating = true;libdata.push_back(temp_book2);
+    bookdataT temp_book3;temp_book3.title = "The Fellowship of the Ring";temp_book3.authors.push_back("JRR Tolkien");temp_book3.catalog_number = 1;temp_book3.subject_headings.push_back("Fantasy");temp_book3.subject_headings.push_back("Drama");temp_book3.subject_headings.push_back("Action");temp_book3.publisher = "George Allen & Unwin (UK)";temp_book3.year_of_publication = 1954;temp_book3.circulating = true;libdata.push_back(temp_book3);
+    bookdataT temp_book4;temp_book4.title = "The Two Towers";temp_book4.authors.push_back("JRR Tolkien");temp_book4.catalog_number = 1;temp_book4.subject_headings.push_back("Fantasy");temp_book4.subject_headings.push_back("Drama");temp_book4.subject_headings.push_back("Action");temp_book4.publisher = "George Allen & Unwin (UK)";temp_book4.year_of_publication = 1954;temp_book4.circulating = true;libdata.push_back(temp_book4);
+    bookdataT temp_book5;temp_book5.title = "The Return of the King";temp_book5.authors.push_back("JRR Tolkien");temp_book5.catalog_number = 1;temp_book5.subject_headings.push_back("Fantasy");temp_book5.subject_headings.push_back("Drama");temp_book5.subject_headings.push_back("Action");temp_book5.publisher = "George Allen & Unwin (UK)";temp_book5.year_of_publication = 1955;temp_book5.circulating = true;libdata.push_back(temp_book5);
 
     std::cout << "==== Library Catalouge Software ====\n";
     while(userChoice != 4){
@@ -323,5 +284,56 @@ int main(){
             }
         }
     }
+
+    // Problem 5
+    initDictionary("words.txt");
+    std::string word_to_guess = chooseRandomWord();
+    std::cout << "===== Hangman =====\n\n";
+    std::cout << "Guess the word before you are hung.\n";
+    bool won = false;
+    bool dead = false;
+    bool run_once = false;
+    int guesses = 0;
+    std::string guess = "";
+    std::string current_word = "";
+    for(int i = 0; i < word_to_guess.size(); i++){
+        current_word.push_back('-');
+    }
+    while(!won && !dead){
+        std::cout << "The word looks like this now: " << current_word << "\n";
+        std::cout << "You have " << 8-guesses << " guesses left.\n";
+        std::cout << "(Dev Mode: " << word_to_guess << ")\n";
+        // Hack behavior, but it works
+        if(!run_once){
+            std::cin.ignore();
+            run_once = true;
+        }
+        std::cout << "Guess a Letter: ";
+
+        std::getline(std::cin, guess);
+        // https://stackoverflow.com/questions/23418390/how-to-convert-a-c-string-to-uppercase
+        transform(guess.begin(), guess.end(), guess.begin(), ::toupper);
+        std::vector<int> indices = find_matches(word_to_guess, guess[0]);
+        if(indices.size() > 0){
+            for(int i = 0; i < indices.size(); i++){
+                current_word[indices[i]] = guess[0];
+            }
+        }
+        else{
+            guesses++;
+        }
+        if(current_word == word_to_guess){
+            won = true;
+            std::cout << "You Winner!\n";
+            std::cout << "The correct word was: " << word_to_guess << "\n";
+        }
+        if(guesses >= 8 && !won){
+            dead = true;
+            std::cout << "You were hung before you guessed the right word.\n";
+            std::cout << "The correct word was: " << word_to_guess << "\n";
+        }
+        
+    }
+    std::cout << "\nGAME OVER\n\n";
     return 0;
 }
