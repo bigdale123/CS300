@@ -2,7 +2,7 @@
 #****************************************************************
 
 PROGRAM = main
-OBJECTS = main.o shape.o
+OBJECTS = main.o shape.o shapelist.o
 
 ROOTPATH = cpplib
 CPPOPTIONS = -I$(ROOTPATH)/include -fvisibility-inlines-hidden
@@ -21,12 +21,17 @@ spl.jar:
 main: $(OBJECTS)
 	g++ -o $(PROGRAM) $(LDOPTIONS) $(OBJECTS) $(LIB)
 
-main.o: main.cpp shape.o Makefile
+main.o: main.cpp shape.o shapelist.o Makefile
 	g++ -c $(CPPOPTIONS) main.cpp
 
 shape.o: shape.cpp Makefile
 	g++ -c $(CPPOPTIONS) shape.cpp
 
+shapelist.o: shapelist.cpp Makefile
+	g++ -c $(CPPOPTIONS) shapelist.cpp
+
+run: $(PROGRAM)
+	./$(PROGRAM)
 
 # ***************************************************************
 # Standard entries to remove files from the directories

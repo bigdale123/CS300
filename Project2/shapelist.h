@@ -33,11 +33,12 @@ public:
  * it one position in the indicated direction, if possible. The method
  * signals an error if sp is not in the ShapeList. 
  */
-
+   void printShapeList();
    void moveToFront(Shape *sp);
    void moveToBack(Shape *sp);
    void moveForward(Shape *sp);
    void moveBackward(Shape *sp);
+   Shape* getShapeAt(double x, double y);
 
 /*
  * Method: draw
