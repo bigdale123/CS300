@@ -1,0 +1,23 @@
+OBJECTS = main.o shape.o
+BINARY = project2
+
+
+ROOTPATH = cpplib
+CPPOPTIONS = -I$(ROOTPATH)/include -fvisibility-inlines-hidden
+LDOPTIONS = -L$(ROOTPATH)/lib -static-libstdc++
+LIB = -lStanfordCPPLib
+
+build: $(OBJECTS)
+	g++ $(LDOPTIONS) $(OBJECTS) $(LIB) -o $(BINARY)
+
+spl.jar:
+	@ln -s $(ROOTPATH)/java/spl.jar
+
+%.o: %.cpp
+	g++ $(CPPOPTIONS) -c $^
+
+run: $(BINARY)
+	./$(BINARY)
+
+clean:
+	rm -f *.o $(BINARY)
