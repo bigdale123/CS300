@@ -23,12 +23,9 @@ int main() {
     //shapes.printShapeList();
     shapes.moveBackward(op);
     if(shapes.getShapeAt(width/4,height/4) == rp){
-        std::cout << "Pogging" << std::endl;
+        //std::cout << "Pogging" << std::endl;
     }
-
-    for (Shape *sp : shapes) {
-        sp->draw(gw);
-    }
+    shapes.draw(gw);
     for (Shape *sp : shapes) {
         delete sp;
     }

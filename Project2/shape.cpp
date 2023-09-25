@@ -34,6 +34,7 @@ void Line::draw(GWindow & gw) {
 }
 
 bool Line::contains(double x, double y) {
+    // If a point is plugged in using the same slope as the given line, and has the same y intercept, then the point must lie on the line.
     double line_slope = this->dy/this->dx; // Slope of this line
     double line_offset = this->y - line_slope*this->x; // y-int of this line
     double point_offset = y - line_slope*x; // y-int of this line
@@ -58,6 +59,8 @@ void Rect::draw(GWindow & gw) {
 }
 
 bool Rect::contains(double x, double y) {
+    // Probably not necessary, but reference:
+    // https://math.stackexchange.com/questions/2157931/how-to-check-if-a-point-is-inside-a-square-2d-plane
     if ((this->x <= x && x <= this->x + this->width) && (this->y <= y && y <= this->y + this->height)) {
         return true;
     }
@@ -78,6 +81,7 @@ void Square::draw(GWindow & gw) {
 }
 
 bool Square::contains(double x, double y) {
+    // Self Explanatory, same as rectangle
     if ((this->x <= x && x <= this->x + this->size) && (this->y <= y && y <= this->y + this->size)) {
         return true;
     }
