@@ -8,6 +8,19 @@
 PirateTranslator::PirateTranslator(){}
 PirateTranslator::~PirateTranslator(){}
 
+
+/**
+ * Get Keys from the Translation Dictionary
+ *
+ * This method is responsible for extracting the keys (English words) from the
+ * translation dictionary and returning them as a vector of strings. It is marked
+ * as a const member function, indicating that it does not modify the object's state.
+ *
+ * The implementation uses a loop to iterate through the dictionary and pushes each
+ * key into the 'retval' vector. The 'retval' vector is then returned to the caller.
+ *
+ * @return A vector of strings containing the keys (English words) from the translation dictionary.
+ */
 std::vector<std::string> PirateTranslator::getKeys() const {
     // https://www.lonecpluspluscoder.com/2015/08/13/an-elegant-way-to-extract-keys-from-a-c-map/
     std::vector<std::string> retval;
@@ -17,6 +30,22 @@ std::vector<std::string> PirateTranslator::getKeys() const {
     return retval;
 }
 
+
+/**
+ * Translate a Line to Pirate-Speak
+ *
+ * This method takes an English sentence as input and translates it into pirate-speak
+ * based on the stored dictionary of translations. It is marked as a const member
+ * function, indicating that it does not modify the object's state.
+ *
+ * The implementation starts by calling 'getKeys' to retrieve the keys (English words)
+ * from the translation dictionary. It then iterates through the keys and uses regular
+ * expressions to perform the translations. Additionally, it capitalizes the first
+ * letter of both the original and translated words.
+ *
+ * @param line The English sentence to be translated.
+ * @return The corresponding pirate-speak translation of the input sentence.
+ */
 std::string PirateTranslator::translateLine(const std::string& line) const {
     std::vector<std::string> keys = getKeys();
     std::string translatedLine = line;
@@ -31,6 +60,18 @@ std::string PirateTranslator::translateLine(const std::string& line) const {
     return translatedLine;
 }
 
+
+/**
+ * Run Unit Tests for Pirate Translation
+ *
+ * This method runs a set of unit tests to validate the translation functionality
+ * of the PirateTranslator class. It includes tests for various English phrases and
+ * their expected pirate-speak translations.
+ *
+ * The implementation initializes a PirateTranslator instance, conducts multiple
+ * translation tests, and checks whether the translated results match the expected
+ * pirate-speak translations. It then reports the test results.
+ */
 void PirateTranslator::runUnitTests() {
     PirateTranslator pt = PirateTranslator();
     int tests_passed = 0;
