@@ -1,0 +1,47 @@
+Start testing: Nov 11 23:39 CST
+----------------------------------------------------------
+1/1 Testing: pokerTests
+1/1 Test: pokerTests
+Command: "/home/dylan/Seafile/My Library/Temp_Git_Files/CS300/Lab10/build/pokerTests"
+Directory: /home/dylan/Seafile/My Library/Temp_Git_Files/CS300/Lab10/build
+"pokerTests" start time: Nov 11 23:39 CST
+Output:
+----------------------------------------------------------
+Running main() from /home/dylan/Seafile/My Library/Temp_Git_Files/CS300/Lab10/googletest/googletest/src/gtest_main.cc
+[==========] Running 10 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 10 tests from pokerTests
+[ RUN      ] pokerTests.Test1
+[       OK ] pokerTests.Test1 (950 ms)
+[ RUN      ] pokerTests.Test2
+[       OK ] pokerTests.Test2 (935 ms)
+[ RUN      ] pokerTests.Test3
+[       OK ] pokerTests.Test3 (929 ms)
+[ RUN      ] pokerTests.Test4
+[       OK ] pokerTests.Test4 (929 ms)
+[ RUN      ] pokerTests.Test5
+[       OK ] pokerTests.Test5 (943 ms)
+[ RUN      ] pokerTests.Test6
+[       OK ] pokerTests.Test6 (885 ms)
+[ RUN      ] pokerTests.Test7
+[       OK ] pokerTests.Test7 (967 ms)
+[ RUN      ] pokerTests.Test8
+[       OK ] pokerTests.Test8 (974 ms)
+[ RUN      ] pokerTests.Test9
+[       OK ] pokerTests.Test9 (891 ms)
+[ RUN      ] pokerTests.Test10
+[       OK ] pokerTests.Test10 (1053 ms)
+[----------] 10 tests from pokerTests (9461 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 1 test suite ran. (9461 ms total)
+[  PASSED  ] 10 tests.
+<end of output>
+Test time =   9.47 sec
+----------------------------------------------------------
+Test Passed.
+"pokerTests" end time: Nov 11 23:39 CST
+"pokerTests" time elapsed: 00:00:09
+----------------------------------------------------------
+
+End testing: Nov 11 23:39 CST

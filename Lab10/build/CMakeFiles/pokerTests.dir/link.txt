@@ -1,0 +1,1 @@
+/run/current-system/sw/bin/c++ CMakeFiles/pokerTests.dir/test.cpp.o -o pokerTests  -Wl,-rpath,"/home/dylan/Seafile/My Library/Temp_Git_Files/CS300/Lab10/build" lib/libgtest_main.a libpokerHand.so lib/libgtest.a 
