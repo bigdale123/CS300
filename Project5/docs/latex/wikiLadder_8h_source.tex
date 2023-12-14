@@ -1,0 +1,32 @@
+\doxysection{wiki\+Ladder.\+h}
+\hypertarget{wikiLadder_8h_source}{}\label{wikiLadder_8h_source}\mbox{\hyperlink{wikiLadder_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_wikiLadder\_h}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_wikiLadder\_h}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <unordered\_set>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classwikiLadder}{wikiLadder}}\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classwikiLadder_a2fad3e4549411719364ba262f074d717}{recursion\_limit}}\ =\ 15;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ std::unordered\_set<std::string>\ \mbox{\hyperlink{classwikiLadder_ac14802f13cf8d21e92792bdf6e957284}{visited}};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classwikiLadder_a6cd5cb6d454791bb81d88d7430df61e0}{curlDataWriteCallback}}(\textcolor{keywordtype}{void}\ *ptr,\ \textcolor{keywordtype}{size\_t}\ size,\ \textcolor{keywordtype}{size\_t}\ nmemb,\ std::string*\ output);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{classwikiLadder_ad58928f461c0aec3248798a9f6a28e56}{getLinks}}(std::string\ wikiPage);}
+\DoxyCodeLine{00049\ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classwikiLadder_aca04409e920e8ac31d52b6219fb1332b}{wikiLadder}}();}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{classwikiLadder_aa6e3a97cb37d4d6b2890e6d2803812f8}{findLadder}}(std::string\ source,\ std::string\ destination,\ \textcolor{keywordtype}{int}\ depth);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

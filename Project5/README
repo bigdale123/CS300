@@ -1,0 +1,23 @@
+Psuedocode
+
+Base Case: 2 pages next to eachother, one rung (link)
+
+Basicaly have to traverse all possible links until you hit the end.
+
+findLadder(link_source, link_destination):
+  # implement recursion limit of 100
+  currentPage = link_destination;
+  links = getListOfLinks(currentPage);
+  for link in links:
+    if link == link_source:
+      ladder.append(link_source)
+      ladder.append(currentPage)
+      return ladder
+    else:
+      rec_ladder = findLadder(link_source, link);
+      if rec_ladder[0] == link_source:
+        rec_ladder.append(link_destination)
+        return rec_ladder
+  
+  return [];
+    

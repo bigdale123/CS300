@@ -1,0 +1,162 @@
+\doxysection{wiki\+Ladder Class Reference}
+\hypertarget{classwikiLadder}{}\label{classwikiLadder}\index{wikiLadder@{wikiLadder}}
+
+
+Class for finding the Wikipedia ladder between two pages.  
+
+
+
+
+{\ttfamily \#include $<$wiki\+Ladder.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classwikiLadder_aca04409e920e8ac31d52b6219fb1332b}{wiki\+Ladder}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the \doxylink{classwikiLadder}{wiki\+Ladder} class. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classwikiLadder_aa6e3a97cb37d4d6b2890e6d2803812f8}{find\+Ladder}} (std\+::string source, std\+::string destination, int depth)
+\begin{DoxyCompactList}\small\item\em Recursive function that finds the wiki ladder between the source and destination wiki pages. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classwikiLadder_ad58928f461c0aec3248798a9f6a28e56}{get\+Links}} (std\+::string wiki\+Page)
+\begin{DoxyCompactList}\small\item\em Finds every link within a wiki page using libcurl. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static size\+\_\+t \mbox{\hyperlink{classwikiLadder_a6cd5cb6d454791bb81d88d7430df61e0}{curl\+Data\+Write\+Callback}} (void \texorpdfstring{$\ast$}{*}ptr, size\+\_\+t size, size\+\_\+t nmemb, std\+::string \texorpdfstring{$\ast$}{*}output)
+\begin{DoxyCompactList}\small\item\em Callback function for the curl operation done in \doxylink{classwikiLadder_ad58928f461c0aec3248798a9f6a28e56}{get\+Links()}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unordered\+\_\+set$<$ std\+::string $>$ \mbox{\hyperlink{classwikiLadder_ac14802f13cf8d21e92792bdf6e957284}{visited}}
+\begin{DoxyCompactList}\small\item\em Unordered set used during find\+Ladder to keep track of pages visited to avoid cycles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \mbox{\hyperlink{classwikiLadder_a2fad3e4549411719364ba262f074d717}{recursion\+\_\+limit}} = 15
+\begin{DoxyCompactList}\small\item\em The maximum amount of recursion allowed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for finding the Wikipedia ladder between two pages. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classwikiLadder_aca04409e920e8ac31d52b6219fb1332b}\label{classwikiLadder_aca04409e920e8ac31d52b6219fb1332b} 
+\index{wikiLadder@{wikiLadder}!wikiLadder@{wikiLadder}}
+\index{wikiLadder@{wikiLadder}!wikiLadder@{wikiLadder}}
+\doxysubsubsection{\texorpdfstring{wikiLadder()}{wikiLadder()}}
+{\footnotesize\ttfamily wiki\+Ladder\+::wiki\+Ladder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor for the \doxylink{classwikiLadder}{wiki\+Ladder} class. 
+
+We don\textquotesingle{}t really need to construct anything, so the constructor is blank. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classwikiLadder_a6cd5cb6d454791bb81d88d7430df61e0}\label{classwikiLadder_a6cd5cb6d454791bb81d88d7430df61e0} 
+\index{wikiLadder@{wikiLadder}!curlDataWriteCallback@{curlDataWriteCallback}}
+\index{curlDataWriteCallback@{curlDataWriteCallback}!wikiLadder@{wikiLadder}}
+\doxysubsubsection{\texorpdfstring{curlDataWriteCallback()}{curlDataWriteCallback()}}
+{\footnotesize\ttfamily size\+\_\+t wiki\+Ladder\+::curl\+Data\+Write\+Callback (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{ptr,  }\item[{size\+\_\+t}]{size,  }\item[{size\+\_\+t}]{nmemb,  }\item[{std\+::string \texorpdfstring{$\ast$}{*}}]{content }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Callback function for the curl operation done in \doxylink{classwikiLadder_ad58928f461c0aec3248798a9f6a28e56}{get\+Links()}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & A pointer to the received data. \\
+\hline
+{\em size} & The size of each element. \\
+\hline
+{\em nmemb} & The number of elements. \\
+\hline
+{\em output} & A pointer to a std\+::string where the data will be written. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The total number of bytes written.
+\end{DoxyReturn}
+This callback function is registered with libcurl to write data from the curl. It writes the received data to the value provided at the std\+::string pointer {\ttfamily content}. The total number of bytes written is returned.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classwikiLadder_ad58928f461c0aec3248798a9f6a28e56}{get\+Links} 
+\end{DoxySeeAlso}
+\Hypertarget{classwikiLadder_aa6e3a97cb37d4d6b2890e6d2803812f8}\label{classwikiLadder_aa6e3a97cb37d4d6b2890e6d2803812f8} 
+\index{wikiLadder@{wikiLadder}!findLadder@{findLadder}}
+\index{findLadder@{findLadder}!wikiLadder@{wikiLadder}}
+\doxysubsubsection{\texorpdfstring{findLadder()}{findLadder()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ wiki\+Ladder\+::find\+Ladder (\begin{DoxyParamCaption}\item[{std\+::string}]{source,  }\item[{std\+::string}]{destination,  }\item[{int}]{depth }\end{DoxyParamCaption})}
+
+
+
+Recursive function that finds the wiki ladder between the source and destination wiki pages. 
+
+The wiki ladder is a list of every Wikipedia link visited in order to get from the source page to the destination page. 
+\begin{DoxyParams}{Parameters}
+{\em source} & A std\+::string representing the starting page, which must be the first rung in the wiki ladder. \\
+\hline
+{\em destination} & A std\+::string representing the wiki page being searched for. \\
+\hline
+{\em depth} & The current recursion depth to avoid exceeding the recursion limit. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of strings representing the wiki ladder. If one exists, each element represents one rung (link) in the wiki ladder. Else, the vector is empty.
+\end{DoxyReturn}
+find\+Ladder uses a depth-\/first search strategy to explore possible paths in the Wikipedia network. It stops the recursion when the depth reaches the recursion limit. The visited set is used to avoid revisiting pages and forming cycles in the ladder. The link != source condition is added to avoid duplicating the source in the ladder. \Hypertarget{classwikiLadder_ad58928f461c0aec3248798a9f6a28e56}\label{classwikiLadder_ad58928f461c0aec3248798a9f6a28e56} 
+\index{wikiLadder@{wikiLadder}!getLinks@{getLinks}}
+\index{getLinks@{getLinks}!wikiLadder@{wikiLadder}}
+\doxysubsubsection{\texorpdfstring{getLinks()}{getLinks()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ wiki\+Ladder\+::get\+Links (\begin{DoxyParamCaption}\item[{std\+::string}]{wiki\+Page }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Finds every link within a wiki page using libcurl. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em wiki\+Page} & A std\+::string representing the current wiki page being searched for links. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of strings with each element representing one link within the current wiki page.
+\end{DoxyReturn}
+The function initiates an HTTP request to the specified Wikipedia page using libcurl. Upon successful retrieval of the page content, it extracts links using a regular expression. The regex pattern ensures that only valid Wikipedia article links are considered and excludes certain Wikipedia pages (e.\+g., Main\+\_\+\+Page, Special\+:). Each extracted link is appended to the \textquotesingle{}links\textquotesingle{} vector after validation. The resulting vector contains URLs pointing to Wikipedia articles on the provided page.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classwikiLadder_a6cd5cb6d454791bb81d88d7430df61e0}{curl\+Data\+Write\+Callback} 
+
+\doxylink{classwikiLadder_a2fad3e4549411719364ba262f074d717}{recursion\+\_\+limit} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classwikiLadder_a2fad3e4549411719364ba262f074d717}\label{classwikiLadder_a2fad3e4549411719364ba262f074d717} 
+\index{wikiLadder@{wikiLadder}!recursion\_limit@{recursion\_limit}}
+\index{recursion\_limit@{recursion\_limit}!wikiLadder@{wikiLadder}}
+\doxysubsubsection{\texorpdfstring{recursion\_limit}{recursion\_limit}}
+{\footnotesize\ttfamily const int wiki\+Ladder\+::recursion\+\_\+limit = 15\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The maximum amount of recursion allowed. 
+
+A static variable indicating the recursion limit for the find\+Ladder function. 15 is chosen to force the finding of a shorter path if one exists. The longest chain between links is eight-\/degrees, according to \href{https://en.wikipedia.org/wiki/Wikipedia:Six_degrees_of_Wikipedia}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+Wikipedia\+:\+Six\+\_\+degrees\+\_\+of\+\_\+\+Wikipedia}}. A recursion limit of 15 allows for a few extra steps than the shortest possible route. \Hypertarget{classwikiLadder_ac14802f13cf8d21e92792bdf6e957284}\label{classwikiLadder_ac14802f13cf8d21e92792bdf6e957284} 
+\index{wikiLadder@{wikiLadder}!visited@{visited}}
+\index{visited@{visited}!wikiLadder@{wikiLadder}}
+\doxysubsubsection{\texorpdfstring{visited}{visited}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+set$<$std\+::string$>$ wiki\+Ladder\+::visited\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Unordered set used during find\+Ladder to keep track of pages visited to avoid cycles. 
+
+We also use a set to eliminate duplicate values. We don\textquotesingle{}t care if we have visited a page twice, and ideally, we shouldn\textquotesingle{}t visit a page twice. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{wikiLadder_8h}{wiki\+Ladder.\+h}}\item 
+\mbox{\hyperlink{wikiLadder_8cpp}{wiki\+Ladder.\+cpp}}\end{DoxyCompactItemize}
